@@ -8,31 +8,23 @@ use core::panic::PanicInfo;
 
 use snic_os::println;
 
-#[no_mangle]
+#[no_mangle] // この関数の名前を変えない
 pub extern "C" fn _start() -> ! {
-    println!("Hello SnicOS{}", "!");
-
-    #[cfg(test)]
-        test_main();
+    test_main();
 
     loop {}
 }
 
-/// この関数はパニック時に呼ばれる。
-#[cfg(not(test))]
-#[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
-    println!("{}", info);
-    loop {}
+fn test_runner(tests: &[&dyn Fn()]) {
+    unimplemented!();
 }
 
-#[cfg(test)]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     snic_os::test_panic_handler(info)
 }
 
 #[test_case]
-fn trivial_assertion() {
-    assert_eq!(1, 1);
+fn test_println() {
+    println!("test_println output");
 }
