@@ -10,7 +10,7 @@ use snic_os::println;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    println!("Hello SnicOS{}", "!");
+    println!("Hello SnicOS!");
 
     snic_os::init();
 
@@ -18,15 +18,15 @@ pub extern "C" fn _start() -> ! {
         test_main();
 
     println!("It did not crash!");
-    loop {}
+    snic_os::hlt_loop();
 }
 
 /// この関数はパニック時に呼ばれる。
 #[cfg(not(test))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    println!("{}", info);
-    loop {}
+    println!("{info}");
+    snic_os::hlt_loop();
 }
 
 #[cfg(test)]
