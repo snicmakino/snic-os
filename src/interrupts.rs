@@ -1,8 +1,6 @@
 use lazy_static::lazy_static;
 use pic8259::ChainedPics;
 use spin;
-use spin::Mutex;
-use x86_64::instructions::port::Port;
 use x86_64::structures::idt::{InterruptDescriptorTable, InterruptStackFrame, PageFaultErrorCode};
 
 use crate::{gdt, hlt_loop, print, println};
@@ -63,7 +61,7 @@ extern "x86-interrupt" fn page_fault_handler(
 }
 
 extern "x86-interrupt" fn double_fault_handler(
-    stack_frame: InterruptStackFrame, error_code: u64) -> ! {
+    stack_frame: InterruptStackFrame, _error_code: u64) -> ! {
     panic!("EXCEPTION: DOUBLE FAULT\n{:#?}", stack_frame);
 }
 

@@ -31,7 +31,7 @@ pub extern "C" fn _start() -> ! {
 }
 
 #[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
+fn panic(_info: &PanicInfo) -> ! {
     serial_print!("stack_overflow::stack_overflow...\t");
 
     snic_os::gdt::init();
