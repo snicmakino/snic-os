@@ -3,16 +3,16 @@
 #![cfg_attr(test, no_main)]
 #![feature(alloc_error_handler)]
 #![feature(custom_test_frameworks)]
+#![feature(const_mut_refs)]
 #![test_runner(crate::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 #![feature(abi_x86_interrupt)]
 
 extern crate alloc;
 
-use core::panic::PanicInfo;
-
 #[cfg(test)]
 use bootloader::{BootInfo, entry_point};
+use core::panic::PanicInfo;
 
 pub mod serial;
 pub mod vga_buffer;

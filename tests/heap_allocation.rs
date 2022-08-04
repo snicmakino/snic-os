@@ -6,14 +6,12 @@
 
 extern crate alloc;
 
+use bootloader::{BootInfo, entry_point};
+
 use alloc::boxed::Box;
 use alloc::vec::Vec;
 use core::panic::PanicInfo;
-
-use bootloader::{BootInfo, entry_point};
-
 use snic_os::allocator::HEAP_SIZE;
-use snic_os::memory::BootInfoFrameAllocator;
 
 entry_point!(main);
 
@@ -60,8 +58,10 @@ fn large_vec() {
 
 #[test_case]
 fn many_boxes() {
+    let long_lived = Box::new(1);
     for i in 0..HEAP_SIZE {
         let x = Box::new(i);
         assert_eq!(*x, i);
     }
+    assert_eq!(*long_lived, 1);
 }

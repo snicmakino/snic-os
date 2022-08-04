@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="WSL - Ubuntu-20.04" type="wsl" uuid="e7090f6f-2699-4a42-bc79-4462c49d4ead">
+        <config>
+          <option name="distributionMsId" value="Ubuntu-20.04" />
+          <option name="projectRootOnTarget" value="/mnt/c/Users/shinichi/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5921.27/jbr/bin&#10;/snic-os" />
+        </config>
+        <ContributedStateBase type="RsLanguageRuntime">
+          <config>
+            <option name="rustcPath" value="/home/shinichi/.cargo/bin/rustc" />
+            <option name="rustcVersion" value="1.62.0 (a8314ef7d 2022-06-27)" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
